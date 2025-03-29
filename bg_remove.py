@@ -7,7 +7,16 @@ import base64
 import os
 import traceback
 import time
+import pandas as pd
 
+
+conn = st.connection("postgresql_servidor", type="sql")
+st.json( conn.query("SELECT * FROM EMPRESA;", 
+                                     ttl=3600,
+                                     show_spinner=None,
+                                    #  params={idserie,dataini,datafim},
+                                     )
+)
 st.set_page_config(layout="wide", page_title="Image Background Remover")
 
 st.write("## Remove background from your image")
