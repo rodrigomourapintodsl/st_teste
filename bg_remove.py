@@ -13,7 +13,6 @@ st.set_page_config(layout="wide", page_title="Image Background Remover")
 
 
 
-
 @st.cache_data
 def sqlteste():
     conn = st.connection("postgresql_servidor", type="sql")
@@ -26,8 +25,7 @@ def sqlteste():
 if st.button("testesql"):
     st.write(sqlteste())
 
-for row in df.itertuples():
-    st.write(f"{row.dsapelido}")
+
 
 st.write("## Remove background from your image")
 st.write(
@@ -63,7 +61,6 @@ def resize_image(image, max_size):
     
     return image.resize((new_width, new_height), Image.LANCZOS)
 
-@st.cache_data
 def process_image(image_bytes):
     """Process image with caching to avoid redundant processing"""
     try:
