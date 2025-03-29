@@ -11,14 +11,7 @@ import pandas as pd
 
 st.set_page_config(layout="wide", page_title="Image Background Remover")
 
-conn = st.connection("postgresql_servidor", type="sql")
-df = conn.query("SELECT * FROM EMPRESA;", 
-                                     ttl=3600,
-                                     show_spinner=None,
-                                    #  params={idserie,dataini,datafim},
-                                     )
-for row in df.itertuples():
-    st.write(f"{row.name} has a :{row.pet}:")
+
 
 st.write("## Remove background from your image")
 st.write(
