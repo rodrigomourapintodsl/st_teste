@@ -1,2 +1,3 @@
-rembgPillow
+rembg
+Pillow
 streamlit
