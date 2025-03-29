@@ -1,15 +1,11 @@
 import streamlit as st
 
+# Initialize connection.
+conn = st.connection("postgresql_servidor", type="sql")
 
-@st.cache_data
-def sqlteste():
-    conn = st.connection("postgresql_servidor", type="sql")
-    df = conn.query("SELECT EMPRESA.DSAPELIDO FROM EMPRESA;", 
-                                     ttl=3600,
-                                     show_spinner=None,
-                                    #  params={idserie,dataini,datafim},
-                                     )
-    
-if st.button("testesql"):
-    st.write(sqlteste())
+# Perform query.
+df = conn.query('SELECT dsapelido,idserie FROM empresa;', ttl="10m")
 
+# Print results.
+for row in df.itertuples():
+    st.write(f"{row.dsapelido} has a :{row.idserie}:")
