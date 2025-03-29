@@ -11,12 +11,21 @@ import pandas as pd
 
 st.set_page_config(layout="wide", page_title="Image Background Remover")
 
-conn = st.connection("postgresql_servidor", type="sql")
-df = conn.query("SELECT * FROM EMPRESA;", 
+
+
+
+@st.cache_data
+def sqlteste():
+    conn = st.connection("postgresql_servidor", type="sql")
+    df = conn.query("SELECT * FROM EMPRESA;", 
                                      ttl=3600,
                                      show_spinner=None,
                                     #  params={idserie,dataini,datafim},
                                      )
+    
+if st.button("testesql"):
+    st.write(sqlteste())
+
 for row in df.itertuples():
     st.write(f"{row.dsapelido}")
 
