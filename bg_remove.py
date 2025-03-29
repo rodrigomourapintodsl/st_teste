@@ -18,7 +18,7 @@ df = conn.query("SELECT * FROM EMPRESA;",
                                     #  params={idserie,dataini,datafim},
                                      )
 for row in df.itertuples():
-    st.write(f"{row.name} has a :{row.pet}:")
+    st.write(f"{row.dsapelido}")
 
 st.write("## Remove background from your image")
 st.write(
