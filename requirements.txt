@@ -1,4 +1,5 @@
 rembg
 Pillow
 streamlit
+psycopg2-binary
 sqlalchemy
